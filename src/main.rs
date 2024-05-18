@@ -15,6 +15,32 @@ fn get_random_computer_hand()-> String {
     return ia_hand
 }
 
+fn ask_player_hand() -> String {
+    println!(
+        "what do you wanna play now? \n
+        Rock, Paper or scissors
+    "
+    );
+    let mut player_hand = String::new();
+    stdin().read_line(&mut player_hand).expect("error: unable to read user input");
+    if
+    player_hand
+        .trim()
+        .to_lowercase() == "paper"
+        || player_hand
+        .trim()
+        .to_lowercase() == "rock"
+        || player_hand
+        .trim()
+        .to_lowercase() == "scissors"
+    {
+        println!("you choose {}",player_hand);
+        return player_hand
+    }else {
+        ask_player_hand()
+    }
+}
+
 
 fn main() {
 
