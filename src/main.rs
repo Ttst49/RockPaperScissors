@@ -4,15 +4,13 @@ use std::io::*;
 
 fn get_random_computer_hand()-> String {
     let random_hand = rand::thread_rng().gen_range(1..4);
-    let mut ia_hand = String::new();
-    match random_hand {
-        1=> ia_hand=String::from("rock"),
-        2=>ia_hand = String::from("papers"),
-        3=>ia_hand = String::from("scissors"),
-        _ => ia_hand = String::from("error")
+
+    return match random_hand {
+        1 => String::from("rock"),
+        2 => String::from("papers"),
+        3 => String::from("scissors"),
+        _ => String::from("error")
     }
-    println!("ia: {}",ia_hand);
-    return ia_hand
 }
 
 fn ask_player_hand() -> String {
@@ -34,9 +32,12 @@ fn ask_player_hand() -> String {
         .trim()
         .to_lowercase() == "scissors"
     {
-        println!("you choose {}",player_hand);
         return player_hand
     }else {
+        println!(
+            "You have to choose a correct answer. \n
+        No, well is not a valid answer cheater"
+        );
         ask_player_hand()
     }
 }
@@ -68,7 +69,7 @@ fn run(mut match_points: HashMap<&str, i32>, number_turns: i32){
 }
 
 fn main() {
-    let mut match_points =  HashMap::from([
+    let match_points =  HashMap::from([
         ("computer",0),
         ("player",0)
     ]);
