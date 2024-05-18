@@ -68,5 +68,9 @@ fn run(mut match_points: HashMap<&str, i32>, number_turns: i32){
 }
 
 fn main() {
-
+    let mut match_points =  HashMap::from([
+        ("computer",0),
+        ("player",0)
+    ]);
+    run(match_points,3)
 }
